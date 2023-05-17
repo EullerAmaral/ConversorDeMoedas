@@ -10,6 +10,7 @@ import UIKit
 class MoedasVC: UIViewController {
 
     var screen: MoedasScreen?
+    var alert: Alert?
     
     override func loadView() {
         screen = MoedasScreen()
@@ -19,8 +20,9 @@ class MoedasVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         screen?.delegate(delegate: self)
+        alert = Alert(controller: self)
+        self.dismissKeyboard()
     }
-
 }
 
 extension MoedasVC: MoedasScreenProtocol {
@@ -28,12 +30,9 @@ extension MoedasVC: MoedasScreenProtocol {
         
         if screen?.coinSegmented.selectedSegmentIndex == screen?.coinSegmented2.selectedSegmentIndex {
             print("Mesma moeda")
-            //            screen.sameCoinAlert()
-        }
-        
-//        else if valueTextField.text == 0
+            alert?.sameCoinAlert()
 
-        else if screen?.coinSegmented.selectedSegmentIndex == 0 && screen?.coinSegmented2.selectedSegmentIndex == 1 {
+        } else if screen?.coinSegmented.selectedSegmentIndex == 0 && screen?.coinSegmented2.selectedSegmentIndex == 1 {
             let valueString = screen?.valueTextField.text
             let valueDouble = NSString(string: valueString!).doubleValue
             let result = valueDouble * (MoedasScreen.Money.dolarToReal.rawValue)
@@ -69,7 +68,17 @@ extension MoedasVC: MoedasScreenProtocol {
             let result = valueDouble * (MoedasScreen.Money.euroToReal.rawValue)
             screen?.resultLabel.text = String(format:"R$" + "%.2f", result) as String
         }
+    }
+}
 
+extension MoedasVC {
+    func dismissKeyboard() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MoedasVC.dismissKeyboardTouchOutside))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
     }
     
+    @objc private func dismissKeyboardTouchOutside() {
+        view.endEditing(true)
+    }
 }

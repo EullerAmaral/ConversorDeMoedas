@@ -83,7 +83,6 @@ class MoedasScreen: UIView {
     
     lazy var coinSegmented: UISegmentedControl = {
         let segmented = UISegmentedControl(items: items)
-//        segmented.selectedSegmentIndex = 0
         segmented.translatesAutoresizingMaskIntoConstraints = false
         segmented.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(red: 12/255, green: 101/255, blue: 15/255, alpha: 100)], for: .selected)
         segmented.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
@@ -122,22 +121,6 @@ class MoedasScreen: UIView {
         button.addTarget(self, action: #selector(tappedConvertButton), for: .touchUpInside)
         return button
     }()
-    
-    private func sameCoinAlert(){
-        
-        let alertController: UIAlertController = UIAlertController(title: "Atenção!", message: "Selecione moedas diferentes", preferredStyle: .alert)
-        let alertButton = UIAlertAction(title: "Ok", style: .cancel)
-        alertController.addAction(alertButton)
-        self.window?.rootViewController!.present(alertController, animated: true)
-    }
-    
-    func withoutValue() {
-        
-        let alertController: UIAlertController = UIAlertController(title: "Atenção!", message: "Digite um valor", preferredStyle: .alert)
-        let alertButton = UIAlertAction(title: "Ok", style: .cancel)
-        alertController.addAction(alertButton)
-        self.window?.rootViewController!.present(alertController, animated: true)
-    }
     
     @objc func tappedConvertButton() {
 

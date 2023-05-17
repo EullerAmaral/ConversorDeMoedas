@@ -15,6 +15,7 @@
 		2A3459E42A14595200D96A74 /* MoedasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3459E22A14595200D96A74 /* MoedasVC.swift */; };
 		2A3459E52A14595200D96A74 /* MoedasScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3459E32A14595200D96A74 /* MoedasScreen.swift */; };
 		2A3459E72A14597100D96A74 /* TelaInicialScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3459E62A14597000D96A74 /* TelaInicialScreen.swift */; };
+		2A3459EA2A14779200D96A74 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3459E92A14779200D96A74 /* Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		2A3459E22A14595200D96A74 /* MoedasVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoedasVC.swift; sourceTree = "<group>"; };
 		2A3459E32A14595200D96A74 /* MoedasScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoedasScreen.swift; sourceTree = "<group>"; };
 		2A3459E62A14597000D96A74 /* TelaInicialScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelaInicialScreen.swift; sourceTree = "<group>"; };
+		2A3459E92A14779200D96A74 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		2A04F17629FEF3350052603E /* ConversorDeMoedas */ = {
 			isa = PBXGroup;
 			children = (
+				2A3459E82A14775700D96A74 /* Alert */,
 				2A04F18E29FF12AF0052603E /* Segunda tela */,
 				2A04F18B29FEF5460052603E /* Primeira tela */,
 				2A04F17729FEF3350052603E /* AppDelegate.swift */,
@@ -87,6 +90,14 @@
 				2A3459E22A14595200D96A74 /* MoedasVC.swift */,
 			);
 			path = "Segunda tela";
+			sourceTree = "<group>";
+		};
+		2A3459E82A14775700D96A74 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				2A3459E92A14779200D96A74 /* Alert.swift */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +176,7 @@
 				2A3459E42A14595200D96A74 /* MoedasVC.swift in Sources */,
 				2A04F17A29FEF3350052603E /* SceneDelegate.swift in Sources */,
 				2A3459E72A14597100D96A74 /* TelaInicialScreen.swift in Sources */,
+				2A3459EA2A14779200D96A74 /* Alert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
