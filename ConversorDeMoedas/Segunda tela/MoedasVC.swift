@@ -31,6 +31,10 @@ extension MoedasVC: MoedasScreenProtocol {
         if screen?.coinSegmented.selectedSegmentIndex == screen?.coinSegmented2.selectedSegmentIndex {
             print("Mesma moeda")
             alert?.sameCoinAlert()
+            
+        } else if screen?.valueTextField.text?.isEmpty == true || screen?.valueTextField.text == "0" {
+            print("Valor zerado")
+            alert?.withoutValue()
 
         } else if screen?.coinSegmented.selectedSegmentIndex == 0 && screen?.coinSegmented2.selectedSegmentIndex == 1 {
             let valueString = screen?.valueTextField.text
