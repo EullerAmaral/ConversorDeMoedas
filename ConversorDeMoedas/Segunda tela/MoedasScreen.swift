@@ -32,15 +32,6 @@ class MoedasScreen: UIView {
     var items = ["Dólar", "Real", "Euro"]
     var item2 = ["Dólar", "Real", "Euro"]
     
-    enum Money: Double {
-        case dolarToReal = 5.99
-        case realToDolar = 0.20
-        case euroToReal = 5.5
-        case realToEuro = 0.18
-        case dolarToEuro = 0.91
-        case euroToDolar = 1.10
-    }
-    
     lazy var backImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -123,9 +114,7 @@ class MoedasScreen: UIView {
     }()
     
     @objc func tappedConvertButton() {
-
         self.delegate?.actionConvertButton()
-        
     }
     
     lazy var resultLabel: UILabel = {

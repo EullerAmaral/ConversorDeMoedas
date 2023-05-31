@@ -11,6 +11,7 @@ class MoedasVC: UIViewController {
 
     var screen: MoedasScreen?
     var alert: Alert?
+    var coinValue: CoinValue?
     
     override func loadView() {
         screen = MoedasScreen()
@@ -21,6 +22,7 @@ class MoedasVC: UIViewController {
         super.viewDidLoad()
         screen?.delegate(delegate: self)
         alert = Alert(controller: self)
+        coinValue = CoinValue()
         self.dismissKeyboard()
     }
 }
@@ -28,48 +30,56 @@ class MoedasVC: UIViewController {
 extension MoedasVC: MoedasScreenProtocol {
     func actionConvertButton() {
         
-        if screen?.coinSegmented.selectedSegmentIndex == screen?.coinSegmented2.selectedSegmentIndex {
+        let valueString = screen?.valueTextField.text
+        let valueDouble = NSString(string: valueString!).doubleValue
+        
+        if screen?.valueTextField.text?.isEmpty == true || valueDouble == 0 {
+            print("Valor zerado")
+            alert?.withoutValue()
+            
+        } else if screen?.coinSegmented.selectedSegmentIndex == -1 && screen?.coinSegmented2.selectedSegmentIndex == -1 {
+            print("Moeda valor inicial")
+            alert?.withoutSegmented()
+        }
+        
+        else if screen?.coinSegmented.selectedSegmentIndex == screen?.coinSegmented2.selectedSegmentIndex {
             print("Mesma moeda")
             alert?.sameCoinAlert()
             
-        } else if screen?.valueTextField.text?.isEmpty == true || screen?.valueTextField.text == "0" {
-            print("Valor zerado")
-            alert?.withoutValue()
-
         } else if screen?.coinSegmented.selectedSegmentIndex == 0 && screen?.coinSegmented2.selectedSegmentIndex == 1 {
             let valueString = screen?.valueTextField.text
             let valueDouble = NSString(string: valueString!).doubleValue
-            let result = valueDouble * (MoedasScreen.Money.dolarToReal.rawValue)
+            let result = valueDouble * CoinValue.Money.dolarToReal.rawValue
             screen?.resultLabel.text = String(format:"R$" + "%.2f", result) as String
             
         } else if screen?.coinSegmented.selectedSegmentIndex == 0 && screen?.coinSegmented2.selectedSegmentIndex == 2 {
             let valueString = screen?.valueTextField.text
             let valueDouble = NSString(string: valueString!).doubleValue
-            let result = valueDouble * (MoedasScreen.Money.dolarToEuro.rawValue)
+            let result = valueDouble * CoinValue.Money.dolarToEuro.rawValue
             screen?.resultLabel.text = String(format:"€" + "%.2f", result) as String
 
         } else if screen?.coinSegmented.selectedSegmentIndex == 1 && screen?.coinSegmented2.selectedSegmentIndex == 0 {
             let valueString = screen?.valueTextField.text
             let valueDouble = NSString(string: valueString!).doubleValue
-            let result = valueDouble * (MoedasScreen.Money.realToDolar.rawValue)
+            let result = valueDouble * CoinValue.Money.realToDolar.rawValue
             screen?.resultLabel.text = String(format:"US$" + "%.2f", result) as String
 
         } else if screen?.coinSegmented.selectedSegmentIndex == 1 && screen?.coinSegmented2.selectedSegmentIndex == 2 {
             let valueString = screen?.valueTextField.text
             let valueDouble = NSString(string: valueString!).doubleValue
-            let result = valueDouble * (MoedasScreen.Money.realToEuro.rawValue)
+            let result = valueDouble * CoinValue.Money.realToEuro.rawValue
             screen?.resultLabel.text = String(format:"€" + "%.2f", result) as String
 
         } else if screen?.coinSegmented.selectedSegmentIndex == 2 && screen?.coinSegmented2.selectedSegmentIndex == 0 {
             let valueString = screen?.valueTextField.text
             let valueDouble = NSString(string: valueString!).doubleValue
-            let result = valueDouble * (MoedasScreen.Money.euroToDolar.rawValue)
+            let result = valueDouble * CoinValue.Money.euroToDolar.rawValue
             screen?.resultLabel.text = String(format:"US$" + "%.2f", result) as String
 
         } else if screen?.coinSegmented.selectedSegmentIndex == 2 && screen?.coinSegmented2.selectedSegmentIndex == 1 {
             let valueString = screen?.valueTextField.text
             let valueDouble = NSString(string: valueString!).doubleValue
-            let result = valueDouble * (MoedasScreen.Money.euroToReal.rawValue)
+            let result = valueDouble * CoinValue.Money.euroToReal.rawValue
             screen?.resultLabel.text = String(format:"R$" + "%.2f", result) as String
         }
     }
