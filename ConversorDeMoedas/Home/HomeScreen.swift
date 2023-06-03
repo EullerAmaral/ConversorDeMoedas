@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol TelaInicialScreenProtocol: AnyObject{
+protocol HomeScreenProtocol: AnyObject{
     func actionStartButton()
 }
 
-class TelaInicialScreen: UIView {
+class HomeScreen: UIView {
 
-    weak var delegate: TelaInicialScreenProtocol?
-    func delegate(delegate:TelaInicialScreenProtocol?){
+    weak var delegate: HomeScreenProtocol?
+    func delegate(delegate:HomeScreenProtocol?){
         self.delegate = delegate
     }
     
@@ -71,7 +71,6 @@ class TelaInicialScreen: UIView {
     }()
     
         @objc func addTargetStartButton(){
-        print("StartButton OK")
             self.delegate?.actionStartButton()
     }
     

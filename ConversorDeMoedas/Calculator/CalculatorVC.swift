@@ -7,14 +7,14 @@
 
 import UIKit
 
-class MoedasVC: UIViewController {
+class CalculatorVC: UIViewController {
 
-    var screen: MoedasScreen?
+    var screen: CalculatorScreen?
     var alert: Alert?
     var coinValue: CoinValue?
     
     override func loadView() {
-        screen = MoedasScreen()
+        screen = CalculatorScreen()
         view = screen        
     }
     
@@ -27,23 +27,20 @@ class MoedasVC: UIViewController {
     }
 }
 
-extension MoedasVC: MoedasScreenProtocol {
+extension CalculatorVC: CalculatorScreenProtocol {
     func actionConvertButton() {
         
         let valueString = screen?.valueTextField.text
         let valueDouble = NSString(string: valueString!).doubleValue
         
         if screen?.valueTextField.text?.isEmpty == true || valueDouble == 0 {
-            print("Valor zerado")
             alert?.withoutValue()
             
         } else if screen?.coinSegmented.selectedSegmentIndex == -1 && screen?.coinSegmented2.selectedSegmentIndex == -1 {
-            print("Moeda valor inicial")
             alert?.withoutSegmented()
         }
         
         else if screen?.coinSegmented.selectedSegmentIndex == screen?.coinSegmented2.selectedSegmentIndex {
-            print("Mesma moeda")
             alert?.sameCoinAlert()
             
         } else if screen?.coinSegmented.selectedSegmentIndex == 0 && screen?.coinSegmented2.selectedSegmentIndex == 1 {
@@ -85,9 +82,9 @@ extension MoedasVC: MoedasScreenProtocol {
     }
 }
 
-extension MoedasVC {
+extension CalculatorVC {
     func dismissKeyboard() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MoedasVC.dismissKeyboardTouchOutside))
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CalculatorVC.dismissKeyboardTouchOutside))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }

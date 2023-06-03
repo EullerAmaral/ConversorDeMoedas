@@ -20,6 +20,6 @@ class CoinValue: UIViewController {
         case realToEuro = 0.18
         case dolarToEuro = 0.91
         case euroToDolar = 1.10
-        
     }
+    
 }

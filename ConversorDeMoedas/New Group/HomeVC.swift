@@ -7,12 +7,12 @@
 
 import UIKit
 
-class ConversorVC: UIViewController {
+class HomeVC: UIViewController {
 
-    var screen: TelaInicialScreen?
+    var screen: HomeScreen?
     
     override func loadView() {
-        screen = TelaInicialScreen()
+        screen = HomeScreen()
         view = screen
     }
     
@@ -22,15 +22,14 @@ class ConversorVC: UIViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
         self.navigationController?.navigationBar.tintColor = UIColor.init(red: 12/255, green: 101/255, blue: 15/255, alpha: 100)
     }
-
 }
 
-extension ConversorVC: TelaInicialScreenProtocol{
+extension HomeVC: HomeScreenProtocol{
     
     func actionStartButton() {
-        let vc: MoedasVC = MoedasVC()
+        let vc: CalculatorVC = CalculatorVC()
         self.navigationController?.pushViewController(vc, animated: true)
-        print("Indo para a tela 2 OK")
     }
+    
 }
 

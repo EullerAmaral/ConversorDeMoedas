@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol MoedasScreenProtocol: AnyObject {
+protocol CalculatorScreenProtocol: AnyObject {
     func actionConvertButton()
 }
 
-class MoedasScreen: UIView {
+class CalculatorScreen: UIView {
 
-    weak var delegate: MoedasScreenProtocol?
-    func delegate(delegate: MoedasScreenProtocol?) {
+    weak var delegate: CalculatorScreenProtocol?
+    func delegate(delegate: CalculatorScreenProtocol?) {
         self.delegate = delegate
     }
     
@@ -22,14 +22,13 @@ class MoedasScreen: UIView {
         super.init(frame: frame)
         configAddSubview()
         configConstraints()
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var items = ["Dólar", "Real", "Euro"]
+    var item1 = ["Dólar", "Real", "Euro"]
     var item2 = ["Dólar", "Real", "Euro"]
     
     lazy var backImage: UIImageView = {
@@ -60,7 +59,6 @@ class MoedasScreen: UIView {
         textField.keyboardType = .decimalPad
         textField.layer.borderColor = UIColor(red: 12/255, green: 101/255, blue: 15/255, alpha: 100).cgColor
         textField.layer.borderWidth = 0.3
-
         return textField
     }()
     
@@ -73,12 +71,11 @@ class MoedasScreen: UIView {
     }()
     
     lazy var coinSegmented: UISegmentedControl = {
-        let segmented = UISegmentedControl(items: items)
+        let segmented = UISegmentedControl(items: item1)
         segmented.translatesAutoresizingMaskIntoConstraints = false
         segmented.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(red: 12/255, green: 101/255, blue: 15/255, alpha: 100)], for: .selected)
         segmented.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
         segmented.backgroundColor = UIColor(red: 12/255, green: 101/255, blue: 15/255, alpha: 100)
-        segmented.addTarget(self, action: #selector(coinSelect), for: .valueChanged)
         return segmented
     }()
 
@@ -96,7 +93,6 @@ class MoedasScreen: UIView {
         segmented.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(red: 12/255, green: 101/255, blue: 15/255, alpha: 100)], for: .selected)
         segmented.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
         segmented.backgroundColor = UIColor(red: 12/255, green: 101/255, blue: 15/255, alpha: 100)
-        segmented.addTarget(self, action: #selector(coinSelect2), for: .valueChanged)
         return segmented
     }()
     
@@ -139,14 +135,6 @@ class MoedasScreen: UIView {
         addSubview(toLabel)
         addSubview(coinSegmented2)
         addSubview(resultLabel)
-    }
-    
-    @objc func coinSelect(){
-        
-    }
-    
-    @objc func coinSelect2() {
-        
     }
     
     func configConstraints(){
