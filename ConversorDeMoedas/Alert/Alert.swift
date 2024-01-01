@@ -1,10 +1,3 @@
-//
-//  Alert.swift
-//  ConversorDeMoedas
-//
-//  Created by Iphone on 16/05/23.
-//
-
 import UIKit
 
 class Alert {
@@ -49,5 +42,4 @@ class Alert {
         alertController.addAction(alertButton)
         controller.present(alertController, animated: true)
     }
-
 }

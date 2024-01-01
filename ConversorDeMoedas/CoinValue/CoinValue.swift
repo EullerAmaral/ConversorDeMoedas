@@ -1,10 +1,3 @@
-//
-//  CoinValue.swift
-//  ConversorDeMoedas
-//
-//  Created by Iphone on 18/05/23.
-//
-
 import UIKit
 
 class CoinValue: UIViewController {
@@ -21,5 +14,4 @@ class CoinValue: UIViewController {
         case dolarToEuro = 0.91
         case euroToDolar = 1.10
     }
-    
 }

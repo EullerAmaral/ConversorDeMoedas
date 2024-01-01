@@ -1,10 +1,3 @@
-//
-//  MoedasVC.swift
-//  ConversorDeMoedas
-//
-//  Created by Iphone on 30/04/23.
-//
-
 import UIKit
 
 class CalculatorVC: UIViewController {

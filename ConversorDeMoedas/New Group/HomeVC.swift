@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  ConversorDeMoedas
-//
-//  Created by Iphone on 30/04/23.
-//
-
 import UIKit
 
 class HomeVC: UIViewController {
@@ -30,6 +23,4 @@ extension HomeVC: HomeScreenProtocol{
         let vc: CalculatorVC = CalculatorVC()
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
 }
-

@@ -1,10 +1,3 @@
-//
-//  MoedasScreen.swift
-//  ConversorDeMoedas
-//
-//  Created by Iphone on 30/04/23.
-//
-
 import UIKit
 
 protocol CalculatorScreenProtocol: AnyObject {
@@ -177,5 +170,4 @@ class CalculatorScreen: UIView {
             resultLabel.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
-
 }
